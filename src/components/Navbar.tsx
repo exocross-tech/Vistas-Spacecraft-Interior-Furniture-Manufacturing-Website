@@ -94,16 +94,16 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 lg:px-12 pt-5 sm:pt-6 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 lg:px-12 pt-4 sm:pt-6 transition-all duration-300"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
         {/* Left Placeholder for symmetric center alignment on desktop */}
         <div className="hidden lg:flex w-44 lg:w-48 items-center" />
 
-        {/* Center Pill Navigation Container */}
+        {/* Navigation Pill Container: Full-width on mobile with logo left and hamburger right */}
         <nav
           aria-label="Main Navigation"
-          className={`flex items-center gap-7 sm:gap-9 px-8 sm:px-10 py-3 sm:py-3.5 rounded-full border transition-all duration-300 shadow-sm ${
+          className={`w-full md:w-auto flex items-center justify-between md:justify-center md:gap-7 lg:gap-9 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 rounded-full border transition-all duration-300 shadow-sm ${
             isScrolled
               ? 'bg-white/95 backdrop-blur-md border-neutral-300 shadow-lg'
               : 'bg-white/90 backdrop-blur-sm border-neutral-200/90 shadow-md'
@@ -113,13 +113,13 @@ export default function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="text-sm sm:text-base font-bold tracking-[0.24em] uppercase text-neutral-900 hover:text-[#8B7355] transition-colors whitespace-nowrap"
+            className="text-sm sm:text-base font-bold tracking-[0.24em] uppercase text-neutral-900 hover:text-[#8B7355] transition-colors whitespace-nowrap flex-shrink-0"
             aria-label="VISTAS Home"
           >
             VISTAS
           </a>
 
-          {/* Desktop Links */}
+          {/* Desktop Links (Hidden on mobile) */}
           <div className="hidden md:flex items-center gap-7 sm:gap-9">
             {NAV_LINKS.map((item) => {
               const isActive = activeSection === item.href.slice(1);
@@ -146,12 +146,12 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Mobile Menu Button inside pill */}
+          {/* Mobile Menu Button inside pill on the far right */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
-            className="md:hidden text-neutral-800 hover:text-neutral-950 p-1.5"
+            className="md:hidden text-neutral-800 hover:text-neutral-950 p-1.5 flex-shrink-0 ml-auto"
           >
             <svg
               className="w-5 h-5"
@@ -177,8 +177,8 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* Right Corner Action Icons: Instagram, X, WhatsApp, YouTube */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        {/* Right Corner Action Icons: Instagram, X, WhatsApp, YouTube (Hidden on mobile) */}
+        <div className="hidden md:flex items-center gap-2 sm:gap-2.5">
           {/* Instagram Icon */}
           <a
             href="https://instagram.com"
@@ -263,7 +263,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="md:hidden max-w-xs mx-auto mt-3 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-neutral-200 p-4"
+            className="md:hidden w-full mt-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-neutral-200 p-4"
           >
             <div className="flex flex-col gap-2">
               {NAV_LINKS.map((item) => {
@@ -284,7 +284,7 @@ export default function Navbar() {
                 );
               })}
 
-              {/* Mobile Social Row */}
+              {/* Mobile Social Row inside Drawer */}
               <div className="pt-3 mt-1 border-t border-neutral-100 flex items-center justify-around text-neutral-700">
                 <a
                   href="https://instagram.com"
