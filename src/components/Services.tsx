@@ -18,7 +18,7 @@ interface ServiceItem {
 const services: ServiceItem[] = [
   {
     id: 'cnc-routing',
-    title: 'CNC Wood Router & Precision Cutting',
+    title: 'Cold Press',
     badge: 'MACHINERY',
     code: 'SPEC // CNC-5AX',
     gradient: 'from-[#3a2416] via-[#24160d] to-[#140c07]',
@@ -34,7 +34,7 @@ const services: ServiceItem[] = [
   },
   {
     id: 'edge-banding',
-    title: 'Automated Edge Banding & Finishing',
+    title: 'Automated Edge Bander',
     badge: 'MACHINERY',
     code: 'SPEC // EDG-800',
     gradient: 'from-[#373d45] via-[#242930] to-[#12161a]',
@@ -50,7 +50,7 @@ const services: ServiceItem[] = [
   },
   {
     id: 'laser-engraving',
-    title: 'Laser Precision Engraving & Joinery',
+    title: 'Cut Saw',
     badge: 'MACHINERY',
     code: 'SPEC // LSR-PRO',
     gradient: 'from-[#3d2b20] via-[#281b13] to-[#150d09]',
@@ -66,7 +66,7 @@ const services: ServiceItem[] = [
   },
   {
     id: 'hydraulic-press',
-    title: 'Hydraulic Press & Surface Lamination',
+    title: 'Multi Boaring',
     badge: 'MACHINERY',
     code: 'SPEC // HYD-200T',
     gradient: 'from-[#2e3338] via-[#1c2024] to-[#0e1012]',
@@ -200,7 +200,7 @@ export function Services() {
                 {/* Bottom Corner Sequence Index */}
                 <div className="absolute bottom-3 left-4 z-10">
                   <span className="font-mono text-[11px] sm:text-xs font-semibold text-white/40 tracking-wider">
-                    0{index + 1} //
+                    0{index + 1} 
                   </span>
                 </div>
 
