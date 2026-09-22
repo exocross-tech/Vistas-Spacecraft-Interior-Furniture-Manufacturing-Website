@@ -1,106 +1,177 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
 interface Testimonial {
+  id: string;
   name: string;
   role: string;
+  companyType: string;
   quote: string;
-  direction: 'left' | 'right';
+  location: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Furniture Co.',
-    role: 'PREMIUM FURNITURE BRAND',
+    id: "t1",
+    name: "Furniture Co.",
+    role: "PREMIUM FURNITURE BRAND",
+    companyType: "Luxury Residential & Contract",
     quote:
-      'The precision and quality of their CNC routing work is unmatched. Every piece meets our exacting standards for premium furniture production.',
-    direction: 'left',
+      "The precision and quality of their CNC routing work is unmatched. Every piece meets our exacting standards for premium furniture production.",
+    location: "Milan / London",
   },
   {
-    name: 'Interior Pro',
-    role: 'INTERIOR DESIGN STUDIO',
+    id: "t2",
+    name: "Interior Pro",
+    role: "INTERIOR DESIGN STUDIO",
+    companyType: "High-End Commercial Interiors",
     quote:
-      'Their automated edge banding and finishing capabilities have streamlined our manufacturing process, delivering consistent quality across all projects.',
-    direction: 'right',
+      "Their automated edge banding and finishing capabilities have streamlined our manufacturing process, delivering consistent quality across all projects.",
+    location: "Berlin / Munich",
+  },
+  {
+    id: "t3",
+    name: "Nordic Living",
+    role: "ARCHITECTURAL INTERIORS",
+    companyType: "Bespoke Veneer & Cabinetry",
+    quote:
+      "The joinery tolerances and finish consistency on our bespoke veneer collections exceeded expectations. A dependable production partner for complex hospitality fits.",
+    location: "Stockholm / Copenhagen",
+  },
+  {
+    id: "t4",
+    name: "Apex Contract",
+    role: "COMMERCIAL WORKSPACE SOLUTIONS",
+    companyType: "Turnkey Corporate Fitouts",
+    quote:
+      "Their high-capacity multi-axis routing and hot press bonding handled our large-scale corporate rollout on schedule without compromising craftsmanship.",
+    location: "Zurich / Singapore",
   },
 ];
+
+// Duplicate array for seamless infinite marquee loop
+const infiniteTestimonials = [...testimonials, ...testimonials];
 
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, {
     once: true,
-    amount: 0.2,
+    amount: 0.15,
   });
+
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
     <section
+      id="testimonials"
       ref={sectionRef}
-      className="w-full bg-[#FAF8F5] py-16 sm:py-24 lg:py-28 overflow-hidden"
+      className="w-full bg-[#FAF8F5] py-16 sm:py-24 lg:py-28 overflow-hidden relative"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
+        {/* Section Eyebrow & Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-left mb-10 sm:mb-12 lg:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-left"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-neutral-900">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-8 h-px bg-[#8B7355]" />
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#8B7355]">
+              Client Voices
+            </span>
+          </div>
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-neutral-900"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
             TESTIMONY
           </h2>
+          <p className="mt-3 text-sm sm:text-base text-neutral-600 max-w-xl font-light">
+            Hear from leading furniture brands, interior architects, and commercial
+            contractors who rely on our precision engineering facility.
+          </p>
         </motion.div>
+      </div>
 
-        {/* Testimonials Grid: 2 columns on desktop/tablet, stacked vertically on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {testimonials.map((item, index) => {
-            const isLeft = item.direction === 'left';
-            const initialX = isLeft ? -60 : 60;
+      {/* Marquee Wrapper with soft edge gradients */}
+      <div
+        className="relative w-full overflow-hidden py-4"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+      >
+        {/* Left Gradient Mask */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 lg:w-40 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/90 to-transparent z-10" />
 
-            return (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, x: initialX }}
-                animate={
-                  isInView
-                    ? { opacity: 1, x: 0 }
-                    : { opacity: 0, x: initialX }
-                }
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.15,
-                  ease: [0.21, 0.47, 0.32, 0.98],
-                }}
-                className="flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 lg:p-10 shadow-xs hover:border-neutral-300 hover:shadow-md transition-all duration-300"
-              >
-                <div>
-                  {/* Name and Role at top */}
-                  <div className="mb-6 sm:mb-8">
-                    <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+        {/* Right Gradient Mask */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 lg:w-40 bg-gradient-to-l from-[#FAF8F5] via-[#FAF8F5]/90 to-transparent z-10" />
+
+        {/* Continuous Looping Horizontal Track */}
+        <div
+          className="flex gap-6 sm:gap-8 w-max select-none cursor-grab active:cursor-grabbing"
+          style={{
+            animation: "testimonial-loop 34s linear infinite",
+            animationPlayState: isPaused ? "paused" : "running",
+          }}
+        >
+          {infiniteTestimonials.map((item, index) => (
+            <div
+              key={`${item.id}-${index}`}
+              className="w-[300px] sm:w-[380px] lg:w-[420px] shrink-0 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-white p-6 sm:p-8 lg:p-9 shadow-xs hover:border-[#8B7355]/50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div>
+                {/* Header: Company & Role */}
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight uppercase">
                       {item.name}
                     </h3>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-[#8B7355]">
                       {item.role}
                     </p>
                   </div>
-
-                  {/* Quote text below with opening quote mark */}
-                  <blockquote className="text-neutral-600 text-base sm:text-lg leading-relaxed font-normal">
-                    <span
-                      className="text-2xl sm:text-3xl font-serif font-bold text-neutral-400 select-none mr-1.5 align-baseline"
-                      aria-hidden="true"
+                  <div className="w-9 h-9 rounded-full bg-[#FAF8F5] border border-neutral-200 flex items-center justify-center shrink-0 text-[#8B7355]/70">
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      &ldquo;
-                    </span>
-                    {item.quote}
-                  </blockquote>
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
                 </div>
-              </motion.div>
-            );
-          })}
+
+                {/* Quote Text */}
+                <blockquote className="text-neutral-600 text-sm sm:text-base leading-relaxed font-normal">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
+              </div>
+
+              {/* Card Footer: Metadata info */}
+              <div className="mt-6 pt-5 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-400">
+                <span>{item.companyType}</span>
+                <span className="font-medium text-neutral-500">{item.location}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Embedded CSS Keyframes for ultra-smooth 60fps horizontal marquee */}
+      <style jsx global>{`
+        @keyframes testimonial-loop {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 }
