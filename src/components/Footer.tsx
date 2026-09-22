@@ -14,14 +14,14 @@ export function Footer() {
   ];
 
   const categories = [
-    { name: "CNC Wood Router", href: "#services" },
-    { name: "Heavy Duty Edge Banding", href: "#services" },
-    { name: "Multi-Axis Laser Joinery", href: "#services" },
-    { name: "Hydraulic Hot Press", href: "#services" },
+    { name: "Automatic Edge Bander", href: "#services" },
+    { name: "Cold Press", href: "#services" },
+    { name: "Cut Saw", href: "#services" },
+    { name: "Multi Boaring", href: "#services" },
   ];
 
   return (
-    <footer className="w-full bg-[#121214] text-white border-t border-neutral-800">
+    <footer className="w-full bg-[#27272a] text-white border-t border-neutral-700/70">
       {/* Main Content Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-stretch">
@@ -36,15 +36,15 @@ export function Footer() {
                     href="#home"
                     className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase font-sans hover:text-[#c4a480] transition-colors"
                   >
-                    VISTAS
+                    VISTA
                   </Link>
-                  <p className="mt-1.5 text-xs tracking-wider uppercase text-neutral-400 font-medium">
+                  <p className="mt-1.5 text-xs tracking-wider uppercase text-neutral-300 font-medium">
                     Spacecraft Interior Furniture Manufacturing
                   </p>
                 </div>
 
                 {/* Physical Address */}
-                <div className="text-xs sm:text-sm text-neutral-400 space-y-1 mb-6 leading-relaxed">
+                <div className="text-xs sm:text-sm text-neutral-300 space-y-1 mb-6 leading-relaxed">
                   <p>Plot 42, Industrial Area, Phase II</p>
                   <p>East Field Boulevard, Gate 04</p>
                   <p>Manufacturing District</p>
@@ -52,16 +52,16 @@ export function Footer() {
 
                 {/* Contact Information */}
                 <div className="space-y-2 text-xs sm:text-sm">
-                  <p className="text-neutral-400">
+                  <p className="text-neutral-300">
                     Email us at{" "}
                     <a
-                      href="mailto:production@vistas.com"
+                      href="mailto:production@vista.com"
                       className="text-white hover:text-[#c4a480] transition-colors underline font-medium"
                     >
-                      production@vistas.com
+                      production@vista.com
                     </a>
                   </p>
-                  <p className="text-neutral-400">
+                  <p className="text-neutral-300">
                     Phone:{" "}
                     <a
                       href="tel:+919876543210"
@@ -82,7 +82,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
-                    className="w-10 h-10 rounded-full bg-neutral-800/90 hover:bg-[#8B7355] text-neutral-300 hover:text-white border border-neutral-700/80 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-10 h-10 rounded-full bg-neutral-700/80 hover:bg-[#8B7355] text-neutral-200 hover:text-white border border-neutral-600/70 flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg
                       className="w-4 h-4"
@@ -105,7 +105,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="X (formerly Twitter)"
-                    className="w-10 h-10 rounded-full bg-neutral-800/90 hover:bg-[#8B7355] text-neutral-300 hover:text-white border border-neutral-700/80 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-10 h-10 rounded-full bg-neutral-700/80 hover:bg-[#8B7355] text-neutral-200 hover:text-white border border-neutral-600/70 flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg
                       className="w-3.5 h-3.5"
@@ -122,7 +122,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"
-                    className="w-10 h-10 rounded-full bg-neutral-800/90 hover:bg-[#8B7355] text-neutral-300 hover:text-white border border-neutral-700/80 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-10 h-10 rounded-full bg-neutral-700/80 hover:bg-[#8B7355] text-neutral-200 hover:text-white border border-neutral-600/70 flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg
                       className="w-4 h-4"
@@ -139,7 +139,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="YouTube"
-                    className="w-10 h-10 rounded-full bg-neutral-800/90 hover:bg-[#8B7355] text-neutral-300 hover:text-white border border-neutral-700/80 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-10 h-10 rounded-full bg-neutral-700/80 hover:bg-[#8B7355] text-neutral-200 hover:text-white border border-neutral-600/70 flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg
                       className="w-4 h-4"
@@ -155,7 +155,7 @@ export function Footer() {
 
             {/* Quick Links (Sm: 3 cols, Lg: 3 cols) */}
             <div className="sm:col-span-3">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-200 mb-4">
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
                 Quick links
               </h4>
               <ul className="space-y-3">
@@ -163,7 +163,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-xs sm:text-sm text-neutral-400 hover:text-white transition-colors duration-150 inline-block"
+                      className="text-xs sm:text-sm text-neutral-300 hover:text-white transition-colors duration-150 inline-block"
                     >
                       {item.name}
                     </Link>
@@ -174,7 +174,7 @@ export function Footer() {
 
             {/* Categories (Sm: 3 cols, Lg: 3 cols) */}
             <div className="sm:col-span-3">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-200 mb-4">
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
                 Categories
               </h4>
               <ul className="space-y-3">
@@ -182,7 +182,7 @@ export function Footer() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-xs sm:text-sm text-neutral-400 hover:text-white transition-colors duration-150 inline-block"
+                      className="text-xs sm:text-sm text-neutral-300 hover:text-white transition-colors duration-150 inline-block"
                     >
                       {item.name}
                     </Link>
@@ -195,18 +195,18 @@ export function Footer() {
           {/* Right Area: Large Interactive Factory Location Map (5 columns on Desktop) */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div className="flex items-center justify-between mb-3">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-200">
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
                 Factory Location Map
               </h4>
-              <span className="text-xs text-neutral-400">
+              <span className="text-xs text-neutral-300">
                 Industrial Area Phase 2
               </span>
             </div>
 
-            <div className="relative w-full h-[300px] sm:h-[330px] lg:h-[350px] rounded-3xl overflow-hidden border border-neutral-700/80 bg-neutral-900 shadow-xl group">
+            <div className="relative w-full h-[300px] sm:h-[330px] lg:h-[350px] rounded-3xl overflow-hidden border border-neutral-600/80 bg-neutral-800 shadow-xl group">
               {/* Google Map iframe */}
               <iframe
-                title="Vistas Factory Location Map"
+                title="Vista Factory Location Map"
                 src="https://maps.google.com/maps?q=Industrial+Area+Phase+2&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
@@ -220,7 +220,7 @@ export function Footer() {
                   href="https://maps.google.com/?q=Industrial+Area+Phase+2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-neutral-900/95 hover:bg-neutral-900 text-white text-xs font-semibold border border-neutral-700/90 shadow-lg transition-all hover:scale-105"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-neutral-900/95 hover:bg-neutral-900 text-white text-xs font-semibold border border-neutral-600 shadow-lg transition-all hover:scale-105"
                 >
                   <span>Directions</span>
                   <svg
@@ -241,7 +241,7 @@ export function Footer() {
 
               {/* Location Badge */}
               <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-950/90 backdrop-blur-md border border-neutral-700/80 text-xs text-neutral-100 shadow-lg">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 backdrop-blur-md border border-neutral-600 text-xs text-white shadow-lg">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#8B7355] animate-pulse" />
                   <span className="font-medium">Phase II Manufacturing Facility</span>
                 </div>
@@ -252,17 +252,17 @@ export function Footer() {
       </div>
 
       {/* Bottom Copyright & Legal Row */}
-      <div className="w-full border-t border-neutral-800 py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
-          <p>© {currentYear} VISTAS Spacecraft | All Rights Reserved</p>
+      <div className="w-full border-t border-neutral-700/70 py-6 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-300">
+          <p>© {currentYear} VISTA Spacecraft | All Rights Reserved</p>
           <div className="flex items-center gap-6">
-            <a href="#about" className="hover:text-neutral-300 transition-colors">
+            <a href="#about" className="hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <a href="#services" className="hover:text-neutral-300 transition-colors">
+            <a href="#services" className="hover:text-white transition-colors">
               Terms of Service
             </a>
-            <a href="#contact" className="hover:text-neutral-300 transition-colors">
+            <a href="#contact" className="hover:text-white transition-colors">
               Support
             </a>
           </div>

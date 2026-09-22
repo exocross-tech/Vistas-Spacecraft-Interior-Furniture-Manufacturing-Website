@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VISTAS | Precision Industrial Furniture Craft",
+  title: "VISTA | Precision Industrial Furniture Craft",
   description:
-    "VISTAS - Interior furniture manufacturing company specializing in precision CNC routing, edge banding, laser engraving, and hydraulic press lamination. Crafting excellence in every detail.",
+    "VISTA - Interior furniture manufacturing company specializing in precision CNC routing, edge banding, laser engraving, and hydraulic press lamination. Crafting excellence in every detail.",
   keywords: [
     "furniture manufacturing",
     "CNC routing",

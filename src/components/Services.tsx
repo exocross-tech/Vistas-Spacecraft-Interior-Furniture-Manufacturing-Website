@@ -115,7 +115,7 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="relative w-full bg-[#FAF8F5] py-16 sm:py-24 lg:py-28">
+    <section id="services" className="relative w-full bg-[#FAF8F5] py-16 sm:py-24 lg:py-28 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading: 'OUR SERVICES' (uppercase, bold, left-aligned, serif-looking) */}
         <motion.div

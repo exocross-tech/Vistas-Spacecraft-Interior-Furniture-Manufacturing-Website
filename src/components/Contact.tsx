@@ -8,7 +8,7 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
-    service: "CNC Wood Router",
+    service: "Automatic Edge Bander",
     message: "",
   });
 
@@ -32,7 +32,7 @@ export default function Contact() {
       );
 
       // Open email client with prefilled details
-      window.location.href = `mailto:production@vistas.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:production@vista.com?subject=${subject}&body=${body}`;
     }, 600);
   };
 
@@ -62,7 +62,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#FAF8F5] text-neutral-900 py-16 sm:py-24 lg:py-28 transition-colors duration-300"
+      className="relative w-full bg-[#FAF8F5] text-neutral-900 py-16 sm:py-24 lg:py-28 transition-colors duration-300 scroll-mt-20 sm:scroll-mt-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
@@ -121,7 +121,7 @@ export default function Contact() {
                 Factory Headquarters
               </h3>
               <p className="text-xs sm:text-sm uppercase tracking-wider text-[#8B7355] font-semibold mb-6">
-                VISTAS Furniture Manufacturing
+                VISTA Furniture Manufacturing
               </p>
 
               <div className="space-y-6">
@@ -182,10 +182,10 @@ export default function Contact() {
                       Direct Email
                     </h4>
                     <a
-                      href="mailto:production@vistas.com"
+                      href="mailto:production@vista.com"
                       className="text-sm sm:text-base text-neutral-800 hover:text-[#8B7355] font-medium transition-colors"
                     >
-                      production@vistas.com
+                      production@vista.com
                     </a>
                     <p className="text-xs text-neutral-500">
                       For RFP, quotation, and CAD files
@@ -302,10 +302,10 @@ export default function Contact() {
                   Your inquiry has been compiled. If your email application did
                   not open automatically, you can send your message directly to{" "}
                   <a
-                    href="mailto:production@vistas.com"
+                    href="mailto:production@vista.com"
                     className="font-semibold text-[#8B7355] underline"
                   >
-                    production@vistas.com
+                    production@vista.com
                   </a>
                   .
                 </p>
@@ -400,22 +400,10 @@ export default function Contact() {
                       }
                       className="w-full px-4 py-3 rounded-xl bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B7355] focus:bg-white transition-all"
                     >
-                      <option value="CNC Wood Router">CNC Wood Router Machining</option>
-                      <option value="Heavy Duty Edge Banding">
-                        Heavy Duty Edge Banding
-                      </option>
-                      <option value="Multi-Axis Laser Joinery">
-                        Multi-Axis Laser Joinery
-                      </option>
-                      <option value="Hydraulic Hot Press Laminating">
-                        Hydraulic Hot Press Laminating
-                      </option>
-                      <option value="Custom Architectural Woodwork">
-                        Custom Architectural Woodwork
-                      </option>
-                      <option value="Bulk Commercial Furniture">
-                        Bulk Commercial Furniture
-                      </option>
+                      <option value="Automatic Edge Bander">Automatic Edge Bander</option>
+                      <option value="Cold Press">Cold Press</option>
+                      <option value="Cut Saw">Cut Saw</option>
+                      <option value="Multi Boaring">Multi Boaring</option>
                     </select>
                   </div>
                 </div>

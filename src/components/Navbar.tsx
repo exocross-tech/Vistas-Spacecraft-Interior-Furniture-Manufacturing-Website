@@ -65,27 +65,25 @@ export default function Navbar() {
 
     if (href.startsWith('#')) {
       const targetId = href.substring(1);
-      const element = document.getElementById(targetId);
-
-      if (element) {
-        const navOffset = 76;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
-        setActiveSection(targetId);
-        window.history.pushState(null, '', href);
-      } else {
+      
+      // Defer slightly so the mobile menu drawer begins closing and doesn't interrupt smooth scrolling
+      setTimeout(() => {
         if (targetId === 'home') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
           setActiveSection('home');
+          window.history.pushState(null, '', href);
+          return;
+        }
+
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setActiveSection(targetId);
+          window.history.pushState(null, '', href);
         } else {
           window.location.hash = href;
         }
-      }
+      }, 100);
     }
   };
 
@@ -98,15 +96,15 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-18 sm:h-20 flex items-center justify-between">
-        {/* Left: VISTAS Brand Logo */}
+        {/* Left: VISTA Brand Logo */}
         <div className="flex-shrink-0 flex items-center">
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
             className="text-lg sm:text-xl font-bold tracking-[0.24em] uppercase text-neutral-900 hover:text-[#8B7355] transition-colors whitespace-nowrap"
-            aria-label="VISTAS Home"
+            aria-label="VISTA Home"
           >
-            VISTAS
+            VISTA
           </a>
         </div>
 

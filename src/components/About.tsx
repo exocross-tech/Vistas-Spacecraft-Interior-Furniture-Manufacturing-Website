@@ -70,7 +70,7 @@ export function About() {
   const isRightColInView = useInView(rightColRef, { once: true, margin: "-50px" });
 
   return (
-    <section id="about" className="relative w-full bg-[#FAF8F5] py-16 sm:py-24 lg:py-28 overflow-hidden">
+    <section id="about" className="relative w-full bg-[#FAF8F5] py-16 sm:py-24 lg:py-28 overflow-hidden scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading: 'ABOUT US' (uppercase, bold, left-aligned) */}
         <motion.div
