@@ -9,20 +9,8 @@ export function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.22,
-        delayChildren: 0.12,
-      },
-    },
-  };
-
-  const subtitleVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.75,
-        ease: [0.22, 1, 0.36, 1],
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };
@@ -54,7 +42,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between overflow-hidden"
+      className="relative w-full min-h-[calc(100vh-72px)] min-h-[calc(100dvh-72px)] flex flex-col justify-end overflow-hidden"
     >
       {/* Base Background: Warm Rich Brown Industrial Gradient */}
       <div
@@ -161,7 +149,7 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'linear-gradient(to top, rgba(12, 10, 9, 0.88) 0%, rgba(20, 16, 14, 0.55) 50%, rgba(26, 20, 17, 0.3) 100%)',
+            'linear-gradient(to top, rgba(12, 10, 9, 0.90) 0%, rgba(20, 16, 14, 0.50) 50%, rgba(26, 20, 17, 0.25) 100%)',
         }}
         aria-hidden="true"
       />
@@ -176,24 +164,16 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Content Container (Full Viewport Spanning) */}
+      {/* Content Container */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 pt-32 sm:pt-36 pb-12 sm:pb-16 flex-1 flex flex-col justify-between"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 pt-20 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-end"
       >
-        {/* Top: Small label text sliding in first */}
-        <motion.div variants={subtitleVariants} className="flex items-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-medium tracking-[0.16em] uppercase text-amber-200/90 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-            <span>Crafting Excellence in Every Detail</span>
-          </div>
-        </motion.div>
-
         {/* Bottom Row: Large hero heading & Carousel pagination indicators */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pt-12">
-          {/* Main Heading sliding in after subtitle */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          {/* Main Heading */}
           <motion.div variants={headingVariants} className="max-w-2xl lg:max-w-3xl">
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white tracking-tight leading-[1.05] drop-shadow-md">
               Precision Industrial Furniture Craft
