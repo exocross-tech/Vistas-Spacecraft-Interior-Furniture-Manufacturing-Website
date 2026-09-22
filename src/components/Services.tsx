@@ -1,13 +1,20 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image, { type StaticImageData } from 'next/image';
 import { motion, useInView, type Variants } from 'framer-motion';
+
+import ColdPressImg from '@/app/images/Cold-Press.png';
+import EdgeBanderImg from '@/app/images/Automatic-Edge-Bander.png';
+import CutSawImg from '@/app/images/Cut-Saw.png';
+import MultiBoaringImg from '@/app/images/Multi-Boaring.png';
 
 interface ServiceItem {
   id: string;
   title: string;
   badge: string;
   code: string;
+  image: StaticImageData;
   gradient: string;
   glowColor: string;
   accentBorder: string;
@@ -21,6 +28,7 @@ const services: ServiceItem[] = [
     title: 'Cold Press',
     badge: 'MACHINERY',
     code: 'SPEC // CNC-5AX',
+    image: ColdPressImg,
     gradient: 'from-[#3a2416] via-[#24160d] to-[#140c07]',
     glowColor: 'rgba(217, 119, 6, 0.18)',
     accentBorder: 'rgba(217, 119, 6, 0.3)',
@@ -37,6 +45,7 @@ const services: ServiceItem[] = [
     title: 'Automated Edge Bander',
     badge: 'MACHINERY',
     code: 'SPEC // EDG-800',
+    image: EdgeBanderImg,
     gradient: 'from-[#373d45] via-[#242930] to-[#12161a]',
     glowColor: 'rgba(148, 163, 184, 0.18)',
     accentBorder: 'rgba(148, 163, 184, 0.3)',
@@ -53,6 +62,7 @@ const services: ServiceItem[] = [
     title: 'Cut Saw',
     badge: 'MACHINERY',
     code: 'SPEC // LSR-PRO',
+    image: CutSawImg,
     gradient: 'from-[#3d2b20] via-[#281b13] to-[#150d09]',
     glowColor: 'rgba(245, 158, 11, 0.18)',
     accentBorder: 'rgba(245, 158, 11, 0.3)',
@@ -69,6 +79,7 @@ const services: ServiceItem[] = [
     title: 'Multi Boaring',
     badge: 'MACHINERY',
     code: 'SPEC // HYD-200T',
+    image: MultiBoaringImg,
     gradient: 'from-[#2e3338] via-[#1c2024] to-[#0e1012]',
     glowColor: 'rgba(161, 161, 170, 0.18)',
     accentBorder: 'rgba(161, 161, 170, 0.3)',
@@ -151,15 +162,29 @@ export function Services() {
               className="group flex flex-col text-left"
             >
               {/* Card Image Area with rounded-xl and industrial gradients */}
-              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-500 border border-neutral-200/80 bg-neutral-900">
+              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-500 border border-neutral-200/80 bg-neutral-950">
                 {/* Industrial gradient background (warm browns & greys) */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.gradient} transition-transform duration-700 ease-out group-hover:scale-105`}
+                  className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-90 transition-transform duration-700 ease-out group-hover:scale-105`}
                 />
+
+                {/* Real Machinery Image with Next.js Optimization */}
+                <div className="absolute inset-0 p-4 sm:p-6 flex items-center justify-center z-[1]">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={service.image}
+                      alt={`VISTA ${service.title} (${service.code}) Machinery`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-contain object-center drop-shadow-[0_12px_24px_rgba(0,0,0,0.65)] transition-transform duration-700 ease-out group-hover:scale-105"
+                      priority={index < 2}
+                    />
+                  </div>
+                </div>
 
                 {/* Subtle radial glow accent */}
                 <div
-                  className="absolute inset-0 pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60 z-[2]"
                   style={{
                     background: `radial-gradient(circle at 75% 25%, ${service.glowColor} 0%, transparent 65%)`,
                   }}
@@ -168,7 +193,7 @@ export function Services() {
 
                 {/* Industrial drafting grid overlay */}
                 <div
-                  className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none"
+                  className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none z-[3]"
                   style={{
                     backgroundImage: `
                       linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
@@ -181,7 +206,7 @@ export function Services() {
 
                 {/* Architectural crosshair line accents */}
                 <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none opacity-25 group-hover:opacity-40 transition-opacity duration-500"
+                  className="absolute inset-0 w-full h-full pointer-events-none opacity-25 group-hover:opacity-40 transition-opacity duration-500 z-[4]"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
@@ -192,23 +217,16 @@ export function Services() {
 
                 {/* Top Corner Technical Code Label */}
                 <div className="absolute top-4 right-4 z-10">
-                  <span className="font-mono text-[10px] sm:text-xs text-white/50 tracking-widest uppercase">
+                  <span className="font-mono text-[10px] sm:text-xs text-white/80 bg-black/50 backdrop-blur-xs px-2.5 py-1 rounded-md tracking-widest uppercase border border-white/10 shadow-xs">
                     {service.code}
                   </span>
                 </div>
 
                 {/* Bottom Corner Sequence Index */}
                 <div className="absolute bottom-3 left-4 z-10">
-                  <span className="font-mono text-[11px] sm:text-xs font-semibold text-white/40 tracking-wider">
+                  <span className="font-mono text-[11px] sm:text-xs font-semibold text-white/60 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-md tracking-wider border border-white/10">
                     0{index + 1} 
                   </span>
-                </div>
-
-                {/* Center Machinery Graphic Icon */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">
-                  <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:border-white/25 transition-all duration-500">
-                    {service.icon}
-                  </div>
                 </div>
               </div>
 
