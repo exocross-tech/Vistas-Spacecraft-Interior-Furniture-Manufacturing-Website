@@ -18,7 +18,7 @@ const CAROUSEL_SLIDES: Slide[] = [
   {
     id: 'video-machinery',
     type: 'video',
-    src: '/Umaboy_Machinery.mp4',
+    src: '/hero-section-vid-1.mp4',
     duration: 10000,
     label: 'Machinery Video',
   },
@@ -348,7 +348,7 @@ export function Hero() {
         >
           <video
             ref={videoRef}
-            src="/Umaboy_Machinery.mp4"
+            src="/hero-section-vid-1.mp4"
             autoPlay
             muted
             loop
