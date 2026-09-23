@@ -22,10 +22,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 40);
 
       const sections = ['home', 'services', 'about', 'contact'];
-      const scrollY = window.scrollY + 100;
+      const scrollY = window.scrollY + 120;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -65,8 +65,8 @@ export default function Navbar() {
 
     if (href.startsWith('#')) {
       const targetId = href.substring(1);
-      
-      // Defer slightly so the mobile menu drawer begins closing and doesn't interrupt smooth scrolling
+
+      // Defer slightly so mobile menu closing animation does not interrupt smooth scroll
       setTimeout(() => {
         if (targetId === 'home') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -87,12 +87,15 @@ export default function Navbar() {
     }
   };
 
+  // Determine navbar theme based on scroll and mobile menu state
+  const isSolidTheme = isScrolled || mobileMenuOpen;
+
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+        isSolidTheme
           ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200/90 shadow-sm'
-          : 'bg-white/90 backdrop-blur-sm border-b border-neutral-200/60'
+          : 'bg-transparent border-b border-white/10'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-18 sm:h-20 flex items-center justify-between">
@@ -101,7 +104,11 @@ export default function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="text-lg sm:text-xl font-bold tracking-[0.24em] uppercase text-neutral-900 hover:text-[#8B7355] transition-colors whitespace-nowrap"
+            className={`text-lg sm:text-xl font-bold tracking-[0.24em] uppercase transition-colors whitespace-nowrap ${
+              isSolidTheme
+                ? 'text-neutral-900 hover:text-[#8B7355]'
+                : 'text-white hover:text-[#deb887]'
+            }`}
             aria-label="VISTA Home"
           >
             VISTA
@@ -121,16 +128,22 @@ export default function Navbar() {
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`text-sm sm:text-[15px] tracking-wide transition-colors whitespace-nowrap relative py-1.5 ${
-                  isActive
-                    ? 'text-neutral-950 font-semibold'
-                    : 'text-neutral-600 hover:text-neutral-950 font-normal'
+                  isSolidTheme
+                    ? isActive
+                      ? 'text-neutral-950 font-semibold'
+                      : 'text-neutral-600 hover:text-neutral-950 font-normal'
+                    : isActive
+                      ? 'text-white font-semibold'
+                      : 'text-white/80 hover:text-white font-normal'
                 }`}
               >
                 {item.name}
                 {isActive && (
                   <motion.span
                     layoutId="activeNavLine"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-neutral-900 rounded-full"
+                    className={`absolute -bottom-1 left-0 right-0 h-[2px] rounded-full ${
+                      isSolidTheme ? 'bg-neutral-900' : 'bg-[#deb887]'
+                    }`}
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -149,7 +162,11 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 transition-all hover:scale-105"
+              className={`w-9 h-9 flex items-center justify-center rounded-full transition-all hover:scale-105 ${
+                isSolidTheme
+                  ? 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100'
+                  : 'text-white/80 hover:text-white hover:bg-white/15'
+              }`}
             >
               <svg
                 className="w-4 h-4"
@@ -172,7 +189,11 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X (formerly Twitter)"
-              className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 transition-all hover:scale-105"
+              className={`w-9 h-9 flex items-center justify-center rounded-full transition-all hover:scale-105 ${
+                isSolidTheme
+                  ? 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100'
+                  : 'text-white/80 hover:text-white hover:bg-white/15'
+              }`}
             >
               <svg
                 className="w-4 h-4"
@@ -189,7 +210,11 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 transition-all hover:scale-105"
+              className={`w-9 h-9 flex items-center justify-center rounded-full transition-all hover:scale-105 ${
+                isSolidTheme
+                  ? 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100'
+                  : 'text-white/80 hover:text-white hover:bg-white/15'
+              }`}
             >
               <svg
                 className="w-4 h-4"
@@ -206,7 +231,11 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 transition-all hover:scale-105"
+              className={`w-9 h-9 flex items-center justify-center rounded-full transition-all hover:scale-105 ${
+                isSolidTheme
+                  ? 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100'
+                  : 'text-white/80 hover:text-white hover:bg-white/15'
+              }`}
             >
               <svg
                 className="w-4 h-4"
@@ -223,7 +252,11 @@ export default function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
-            className="md:hidden text-neutral-800 hover:text-neutral-950 p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              isSolidTheme
+                ? 'text-neutral-800 hover:text-neutral-950 hover:bg-neutral-100'
+                : 'text-white hover:bg-white/15'
+            }`}
           >
             <svg
               className="w-6 h-6"
@@ -258,7 +291,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-white/98 border-b border-neutral-200 px-6 py-5 shadow-lg"
+            className="md:hidden overflow-hidden bg-white/98 border-b border-neutral-200 px-6 py-5 shadow-xl text-neutral-900"
           >
             <div className="flex flex-col gap-3">
               {NAV_LINKS.map((item) => {
@@ -335,5 +368,3 @@ export default function Navbar() {
     </header>
   );
 }
-
-export { Navbar };
